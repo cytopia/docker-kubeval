@@ -31,6 +31,7 @@ help:
 # Lint Targets
 # --------------------------------------------------------------------------------------------------
 lint: _lint-files
+lint: _lint-workflow
 
 .PHONY: _lint-workflow
 _lint-workflow:
@@ -41,12 +42,25 @@ _lint-workflow:
 	GIT_CURR_MAJOR="$$( git tag | sort -V | tail -1 | sed 's|\.[0-9]*$$||g' )"; \
 	GIT_CURR_MINOR="$$( git tag | sort -V | tail -1 | sed 's|^[0-9]*\.||g' )"; \
 	GIT_NEXT_TAG="$${GIT_CURR_MAJOR}.$$(( GIT_CURR_MINOR + 1 ))"; \
+	AVAILABLE_REFS="$$( \
+		grep 'refs:' -A 100 .github/workflows/nightly.yml \
+		| grep 'steps:' -B 100 \
+		| grep -E '[[:space:]]+\-' \
+		| sed 's/.*\s//g' \
+		| sed "s/'//g" \
+		| sed 's/"//g' \
+		| grep -v master || true \
+	)"; \
+	if [ -n "$${AVAILABLE_REFS}" ]; then \
 		if ! grep 'refs:' -A 100 .github/workflows/nightly.yml \
-		| grep  "          - '$${GIT_NEXT_TAG}'" >/dev/null; then \
-		echo "[ERR] New Tag required in .github/workflows/nightly.yml: $${GIT_NEXT_TAG}"; \
-			exit 1; \
-		else \
-		echo "[OK] Git Tag present in .github/workflows/nightly.yml: $${GIT_NEXT_TAG}"; \
+			| grep  "          - '$${GIT_NEXT_TAG}'" >/dev/null; then \
+			echo "[ERR] New Tag required in .github/workflows/nightly.yml: $${GIT_NEXT_TAG}"; \
+				exit 1; \
+			else \
+			echo "[OK] Git Tag present in .github/workflows/nightly.yml: $${GIT_NEXT_TAG}"; \
+		fi \
+	else \
+		echo "[OK] No Tags defined at all in .github/workflows/nightly.yml"; \
 	fi
 	@echo
 

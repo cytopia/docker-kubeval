@@ -34,7 +34,5 @@ jobs:
       # Lint repository
       # ------------------------------------------------------------
       - name: Lint
-        id: vars
         run: |
           make lint
-

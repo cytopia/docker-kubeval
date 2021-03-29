@@ -65,13 +65,13 @@ The following Docker image tags are rolling releases and are built and updated e
 
 | Docker tag      | Explanation |
 |-----------------|-------------|
-| `latest`        | Latest stable version as defined via this repository's master branch |
-| `0.15`          | Latest stable 0.15.x version |
-| `0.14`          | Latest stable 0.14.x version |
-| `0.13`          | Latest stable 0.13.x version |
-| `0.12`          | Latest stable 0.12.x version |
-| `0.11`          | Latest stable 0.11.x version |
-| `0.10`          | Latest stable 0.10.x version |
+| `latest`        | Latest stable version |
+| `0.15`          | Latest stable `0.15.x` version |
+| `0.14`          | Latest stable `0.14.x` version |
+| `0.13`          | Latest stable `0.13.x` version |
+| `0.12`          | Latest stable `0.12.x` version |
+| `0.11`          | Latest stable `0.11.x` version |
+| `0.10`          | Latest stable `0.10.x` version |
 
 #### Point in time releases
 

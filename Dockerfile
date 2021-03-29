@@ -2,6 +2,7 @@ FROM alpine:3.13 as builder
 
 RUN set -x \
 	&& apk add --no-cache \
+		git \
 		wget
 
 ARG VERSION
@@ -9,7 +10,12 @@ RUN set -x \
 	&& if [ "${VERSION}" = "latest" ]; then \
 		wget "https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz"; \
 	else \
-		wget "https://github.com/instrumenta/kubeval/releases/download/${VERSION}/kubeval-darwin-amd64.tar.gz"; \
+		git clone https://github.com/instrumenta/kubeval /tmp/kubeval \
+		&& cd /tmp/kubeval \
+		&& VERSION="$( git tag --sort=v:refname | grep -E "^${VERSION}" | tail -1 )" \
+		&& cd / \
+		&& echo "${VERSION}" \
+		&& wget "https://github.com/instrumenta/kubeval/releases/download/${VERSION}/kubeval-linux-amd64.tar.gz"; \
 	fi \
 	&& tar xf kubeval-linux-amd64.tar.gz \
 	&& cp kubeval /usr/bin/kubeval \

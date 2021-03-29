@@ -30,7 +30,31 @@ help:
 # --------------------------------------------------------------------------------------------------
 # Lint Targets
 # --------------------------------------------------------------------------------------------------
-lint:
+lint: _lint-files
+
+.PHONY: _lint-workflow
+_lint-workflow:
+	@echo "################################################################################"
+	@echo "# Lint Workflow"
+	@echo "################################################################################"
+	@\
+	GIT_CURR_MAJOR="$$( git tag | sort -V | tail -1 | sed 's|\.[0-9]*$$||g' )"; \
+	GIT_CURR_MINOR="$$( git tag | sort -V | tail -1 | sed 's|^[0-9]*\.||g' )"; \
+	GIT_NEXT_TAG="$${GIT_CURR_MAJOR}.$$(( GIT_CURR_MINOR + 1 ))"; \
+		if ! grep 'refs:' -A 100 .github/workflows/nightly.yml \
+		| grep  "          - '$${GIT_NEXT_TAG}'" >/dev/null; then \
+		echo "[ERR] New Tag required in .github/workflows/nightly.yml: $${GIT_NEXT_TAG}"; \
+			exit 1; \
+		else \
+		echo "[OK] Git Tag present in .github/workflows/nightly.yml: $${GIT_NEXT_TAG}"; \
+	fi
+	@echo
+
+.PHONY: lint-files
+_lint-files:
+	@echo "################################################################################"
+	@echo "# Lint Files"
+	@echo "################################################################################"
 	@docker run --rm -v $(CURRENT_DIR):/data cytopia/file-lint file-cr --text --ignore '.git/,.github/,tests/' --path .
 	@docker run --rm -v $(CURRENT_DIR):/data cytopia/file-lint file-crlf --text --ignore '.git/,.github/,tests/' --path .
 	@docker run --rm -v $(CURRENT_DIR):/data cytopia/file-lint file-trailing-single-newline --text --ignore '.git/,.github/,tests/' --path .
@@ -79,13 +103,13 @@ _test-version:
 				| grep -Eo '[.0-9]+' \
 		)"; \
 		echo "Testing for latest: $${LATEST}"; \
-		if ! docker run --rm $(IMAGE) --version | grep -E "$${LATEST}$$"; then \
+		if ! docker run --rm $(IMAGE) --version | grep -E "Version: $${LATEST}$$"; then \
 			echo "Failed"; \
 			exit 1; \
 		fi; \
 	else \
 		echo "Testing for tag: $(VERSION)"; \
-		if ! docker run --rm $(IMAGE) --version | grep -E "^$(VERSION)"; then \
+		if ! docker run --rm $(IMAGE) --version | grep -E "Version: $(VERSION)"; then \
 			echo "Failed"; \
 			exit 1; \
 		fi; \

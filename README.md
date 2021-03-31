@@ -66,6 +66,7 @@ The following Docker image tags are rolling releases and are built and updated e
 | Docker tag      | Explanation |
 |-----------------|-------------|
 | `latest`        | Latest stable version |
+| `0.16`          | Latest stable `0.16.x` version |
 | `0.15`          | Latest stable `0.15.x` version |
 | `0.14`          | Latest stable `0.14.x` version |
 | `0.13`          | Latest stable `0.13.x` version |
@@ -82,6 +83,7 @@ The following Docker image tags are built once and can be used for reproducible 
 | Docker tag      | Explanation |
 |-----------------|-------------|
 | `latest-<TAG>`  | Latest stable version when this repository was git tagged |
+| `0.16-<TAG>`    | Latest stable 0.16.x version when this repository was git tagged |
 | `0.15-<TAG>`    | Latest stable 0.15.x version when this repository was git tagged |
 | `0.14-<TAG>`    | Latest stable 0.14.x version when this repository was git tagged |
 | `0.13-<TAG>`    | Latest stable 0.13.x version when this repository was git tagged |

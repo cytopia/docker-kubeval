@@ -110,7 +110,7 @@ _test-version:
 		LATEST="$$( \
 			curl -L -sS  https://github.com/instrumenta/kubeval/releases/ \
 				| tac | tac \
-				| grep -Eo "instrumenta/kubeval/releases/tag/[.0-9]+" \
+				| grep -Eo "instrumenta/kubeval/releases/tag/v?[.0-9]+" \
 				| sed 's/.*tag\///g' \
 				| sort -V \
 				| tail -1 \

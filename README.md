@@ -1,15 +1,13 @@
 # Docker image for `kubeval`
 
 [![Tag](https://img.shields.io/github/tag/cytopia/docker-kubeval.svg)](https://github.com/cytopia/docker-kubeval/releases)
-[![](https://images.microbadger.com/badges/version/cytopia/kubeval:latest.svg?kill_cache=1)](https://microbadger.com/images/cytopia/kubeval:latest "kubeval")
-[![](https://images.microbadger.com/badges/image/cytopia/kubeval:latest.svg?kill_cache=1)](https://microbadger.com/images/cytopia/kubeval:latest "kubeval")
-[![](https://img.shields.io/docker/pulls/cytopia/kubeval.svg)](https://hub.docker.com/r/cytopia/kubeval)
 [![](https://img.shields.io/badge/github-cytopia%2Fdocker--kubeval-red.svg)](https://github.com/cytopia/docker-kubeval "github.com/cytopia/docker-kubeval")
 [![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
 
 [![lint](https://github.com/cytopia/docker-kubeval/workflows/lint/badge.svg)](https://github.com/cytopia/docker-kubeval/actions?query=workflow%3Alint)
 [![build](https://github.com/cytopia/docker-kubeval/workflows/build/badge.svg)](https://github.com/cytopia/docker-kubeval/actions?query=workflow%3Abuild)
 [![nightly](https://github.com/cytopia/docker-kubeval/workflows/nightly/badge.svg)](https://github.com/cytopia/docker-kubeval/actions?query=workflow%3Anightly)
+
 
 > #### All [#awesome-ci](https://github.com/topics/awesome-ci) Docker images
 >
@@ -41,21 +39,20 @@
 > [yamlfmt][yfmt-git-lnk] **•**
 > [yamllint][ylint-git-lnk]
 
-> #### All [#awesome-ci](https://github.com/topics/awesome-ci) Makefiles
->
-> Visit **[cytopia/makefiles](https://github.com/cytopia/makefiles)** for seamless project integration, minimum required best-practice code linting and CI.
+View **[Dockerfiles](https://github.com/cytopia/docker-kubeval/blob/master/Dockerfiles/)** on GitHub.
 
-View **[Dockerfile](https://github.com/cytopia/docker-kubeval/blob/master/Dockerfile)** on GitHub.
 
-[![Docker hub](http://dockeri.co/image/cytopia/kubeval?kill_cache=1)](https://hub.docker.com/r/cytopia/kubeval)
+**Available Architectures:**  `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x`
 
 Tiny Alpine-based multistage-build dockerized version of [kubeval](https://github.com/instrumenta/kubeval)<sup>[1]</sup>.
 The image is built nightly against multiple stable versions and pushed to Dockerhub.
 
 <sup>[1] Official project: https://github.com/instrumenta/kubeval</sup>
 
+## :whale: Available Docker image versions
 
-## Available Docker image versions
+[![](https://img.shields.io/docker/pulls/cytopia/kubeval.svg)](https://hub.docker.com/r/cytopia/kubeval)
+[![Docker](https://badgen.net/badge/icon/:latest?icon=docker&label=cytopia/kubeval)](https://hub.docker.com/r/cytopia/kubeval)
 
 #### Rolling releaess
 
@@ -63,16 +60,16 @@ The following Docker image tags are rolling releases and are built and updated e
 
 [![nightly](https://github.com/cytopia/docker-kubeval/workflows/nightly/badge.svg)](https://github.com/cytopia/docker-kubeval/actions?query=workflow%3Anightly)
 
-| Docker tag      | Explanation |
-|-----------------|-------------|
-| `latest`        | Latest stable version |
-| `0.16`          | Latest stable `0.16.x` version |
-| `0.15`          | Latest stable `0.15.x` version |
-| `0.14`          | Latest stable `0.14.x` version |
-| `0.13`          | Latest stable `0.13.x` version |
-| `0.12`          | Latest stable `0.12.x` version |
-| `0.11`          | Latest stable `0.11.x` version |
-| `0.10`          | Latest stable `0.10.x` version |
+| Docker Tag           | Git Ref   | kubeval      | Available Architectures                      |
+|----------------------|-----------|--------------|----------------------------------------------|
+| `latest`             | master    | latest       | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.16`               | master    | **`0.16.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.15`               | master    | **`0.15.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.14`               | master    | **`0.14.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.13`               | master    | **`0.13.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.12`               | master    | **`0.12.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.11`               | master    | **`0.11.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.10`               | master    | **`0.10.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
 
 #### Point in time releases
 
@@ -80,31 +77,34 @@ The following Docker image tags are built once and can be used for reproducible 
 
 [![build](https://github.com/cytopia/docker-kubeval/workflows/build/badge.svg)](https://github.com/cytopia/docker-kubeval/actions?query=workflow%3Abuild)
 
-| Docker tag      | Explanation |
-|-----------------|-------------|
-| `latest-<TAG>`  | Latest stable version when this repository was git tagged |
-| `0.16-<TAG>`    | Latest stable 0.16.x version when this repository was git tagged |
-| `0.15-<TAG>`    | Latest stable 0.15.x version when this repository was git tagged |
-| `0.14-<TAG>`    | Latest stable 0.14.x version when this repository was git tagged |
-| `0.13-<TAG>`    | Latest stable 0.13.x version when this repository was git tagged |
-| `0.12-<TAG>`    | Latest stable 0.12.x version when this repository was git tagged |
-| `0.11-<TAG>`    | Latest stable 0.11.x version when this repository was git tagged |
-| `0.10-<TAG>`    | Latest stable 0.10.x version when this repository was git tagged |
+| Docker Tag           | Git Ref      | kubeval      | Available Architectures                      |
+|----------------------|--------------|--------------|----------------------------------------------|
+| `latest-<tag>`       | tag: `<tag>` | latest       | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.16-<tag>`         | tag: `<tag>` | **`0.16.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.15-<tag>`         | tag: `<tag>` | **`0.15.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.14-<tag>`         | tag: `<tag>` | **`0.14.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.13-<tag>`         | tag: `<tag>` | **`0.13.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.12-<tag>`         | tag: `<tag>` | **`0.12.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.11-<tag>`         | tag: `<tag>` | **`0.11.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+| `0.10-<tag>`         | tag: `<tag>` | **`0.10.x`** | `amd64`, `i386`, `arm64`, `arm/v7`, `arm/v6`, `ppc64le`, `s390x` |
+
+> Where `<tag>` refers to the chosen git tag from this repository.
 
 
-## Docker mounts
+## :open_file_folder: Docker mounts
 
 The working directory inside the Docker container is **`/data/`** and should be mounted locally to
 the root of your project.
 
 
-## Usage
+## :computer: Usage
 
 ```bash
 docker run --rm -v $(pwd):/data cytopia/kubeval *.yml
 ```
 
-## Related [#awesome-ci](https://github.com/topics/awesome-ci) projects
+
+## :arrows_counterclockwise: Related [#awesome-ci](https://github.com/topics/awesome-ci) projects
 
 ### Docker images
 
@@ -258,7 +258,8 @@ Visit **[cytopia/makefiles](https://github.com/cytopia/makefiles)** for dependen
 The provided Makefiles will only require GNU Make and Docker itself removing the need to install anything else.
 
 
-## License
+## :page_facing_up: License
+
 
 **[MIT License](LICENSE)**
 
